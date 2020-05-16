@@ -1,0 +1,129 @@
+# depslib dependency file v1.0
+1266686516 source:/media/depo/code/public/MPEG7FexLib/sample/FexWrite.cpp
+	<iostream>
+	"FexWrite.h"
+
+1266687887 /media/depo/code/public/MPEG7FexLib/sample/FexWrite.h
+	"Feature.h"
+
+1266687712 /media/depo/code/public/MPEG7FexLib/include/Feature.h
+	<vector>
+	"Frame.h"
+	"Descriptors.h"
+	"Extraction/FaceRecognitionExtraction.h"
+	"Extraction/GoFGoPColorExtraction.h"
+
+1266668193 /media/depo/code/public/MPEG7FexLib/include/Frame.h
+	"cxcore.h"
+	"AddressLib/vopio.h"
+
+1218644851 /media/depo/libs/opencv/include/opencv/cxcore.h
+	"ipl.h"
+	"ipl/ipl.h"
+	"cxtypes.h"
+	"cxerror.h"
+	"cvver.h"
+	"cxcore.hpp"
+
+1218644851 /media/depo/libs/opencv/include/opencv/cxtypes.h
+	<assert.h>
+	<stdlib.h>
+	<string.h>
+	<float.h>
+	<emmintrin.h>
+	<fastmath.h>
+	<mathimf.h>
+	<math.h>
+	<ipl.h>
+	<ipl/ipl.h>
+
+1218644851 /media/depo/libs/opencv/include/opencv/cxerror.h
+
+1218644851 /media/depo/libs/opencv/include/opencv/cvver.h
+
+1218644851 /media/depo/libs/opencv/include/opencv/cxcore.hpp
+
+1258449578 /media/depo/code/public/MPEG7FexLib/include/AddressLib/vopio.h
+	"momusys.h"
+	"address.h"
+
+1214647171 /media/depo/code/public/MPEG7FexLib/include/AddressLib/momusys.h
+
+1258190879 /media/depo/code/public/MPEG7FexLib/include/AddressLib/address.h
+
+1266483672 /media/depo/code/public/MPEG7FexLib/include/Descriptors.h
+	"Descriptors/ColorSpace.h"
+	"Descriptors/ColorQuant.h"
+	"Descriptors/ColorLayout.h"
+	"Descriptors/ColorStructure.h"
+	"Descriptors/DominantColor.h"
+	"Descriptors/ScalableColor.h"
+	"Descriptors/FaceRecognition.h"
+	"Descriptors/EdgeHist.h"
+	"Descriptors/HomoTexture.h"
+	"Descriptors/ContourShape.h"
+	"Descriptors/RegionShape.h"
+
+1258123493 /media/depo/code/public/MPEG7FexLib/include/Descriptors/ColorSpace.h
+
+1258123961 /media/depo/code/public/MPEG7FexLib/include/Descriptors/ColorQuant.h
+
+1258103851 /media/depo/code/public/MPEG7FexLib/include/Descriptors/ColorLayout.h
+
+1258573325 /media/depo/code/public/MPEG7FexLib/include/Descriptors/ColorStructure.h
+
+1258131593 /media/depo/code/public/MPEG7FexLib/include/Descriptors/DominantColor.h
+	"ColorSpace.h"
+	"ColorQuant.h"
+
+1258059145 /media/depo/code/public/MPEG7FexLib/include/Descriptors/ScalableColor.h
+
+1266687800 /media/depo/code/public/MPEG7FexLib/include/Descriptors/FaceRecognition.h
+
+1258137191 /media/depo/code/public/MPEG7FexLib/include/Descriptors/EdgeHist.h
+
+1258138867 /media/depo/code/public/MPEG7FexLib/include/Descriptors/HomoTexture.h
+
+1258187207 /media/depo/code/public/MPEG7FexLib/include/Descriptors/ContourShape.h
+
+1258191770 /media/depo/code/public/MPEG7FexLib/include/Descriptors/RegionShape.h
+
+1258449863 /media/depo/code/public/MPEG7FexLib/include/Extraction/FaceRecognitionExtraction.h
+	"AddressLib/vopio.h"
+	"Descriptors/FaceRecognition.h"
+
+1258449872 /media/depo/code/public/MPEG7FexLib/include/Extraction/GoFGoPColorExtraction.h
+	"Descriptors/ScalableColor.h"
+	"ScalableColorExtraction.h"
+	"AddressLib/vopio.h"
+
+1258449867 /media/depo/code/public/MPEG7FexLib/include/Extraction/ScalableColorExtraction.h
+	"AddressLib/vopio.h"
+
+1266686759 source:/media/depo/code/public/MPEG7FexLib/sample/main.cpp
+	<iostream>
+	"FexWrite.h"
+	"highgui.h"
+	"cv.h"
+
+1218644855 /media/depo/libs/opencv/include/opencv/highgui.h
+	"cxcore.h"
+	<windows.h>
+	<chdl.h>
+
+1218644852 /media/depo/libs/opencv/include/opencv/cv.h
+	<chdl.h>
+	"cxcore.h"
+	"cvtypes.h"
+	"cv.hpp"
+	"cvcompat.h"
+
+1218644852 /media/depo/libs/opencv/include/opencv/cvtypes.h
+	<assert.h>
+	<stdlib.h>
+
+1218644852 /media/depo/libs/opencv/include/opencv/cv.hpp
+
+1218644852 /media/depo/libs/opencv/include/opencv/cvcompat.h
+	<string.h>
+

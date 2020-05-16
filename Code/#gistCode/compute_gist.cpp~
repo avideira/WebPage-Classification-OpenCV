@@ -1,0 +1,127 @@
+/* Lear's GIST implementation, version 1.1, (c) INRIA 2009, Licence: PSFL */
+#include <cv.h>       // opencv general include file
+#include <highgui.h> 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <iostream>
+
+extern "C" {
+	#include "gist.h"
+}
+
+using namespace cv;
+using namespace std;
+
+static color_image_t *load_ppm(const char *fname) {
+  FILE *f=fopen(fname,"r");
+  if(!f) {
+    perror("could not open infile");
+    exit(1);
+  }
+
+
+  int px,width,height,maxval;
+  if(fscanf(f,"P%d %d %d %d",&px,&width,&height,&maxval)!=4 || maxval!=255 || (px!=6 && px!=5)) {
+    fprintf(stderr,"Error: input not a raw PGM/PPM with maxval 255\n");
+    exit(1);    
+  }
+  fgetc(f); /* eat the newline */
+  color_image_t *im=color_image_new(width,height);
+	int i;
+  for(i=0;i<width*height;i++) {
+    im->c1[i]=fgetc(f);
+    if(px==6) {
+      im->c2[i]=fgetc(f);
+      im->c3[i]=fgetc(f);    
+    } else {
+      im->c2[i]=im->c1[i];
+      im->c3[i]=im->c1[i];   
+    }
+  }
+  
+  fclose(f);
+  return im;
+}
+
+int main(int argc,char **args) {
+  
+	
+	int nblocks=4;
+	int n_scale=3;
+	int orientations_per_scale[50]={8,8,4};
+  
+	Mat src_img = imread(args[1], 0);
+	if(src_img.empty()){ 
+		fprintf(stderr,"Source image empty."); 
+		return -1;
+	}
+	int cn = src_img.channels();
+	int i,j;
+	for(i=0; i<src_img.rows; i++){
+   		for(j=0; j<src_img.cols; j++){
+			Scalar intensity = src_img.at<uchar>(i, j);
+           		src_img.data[i*src_img.cols*cn + j*cn + 0] = 255 - intensity[0]; //b
+           		src_img.data[i*src_img.cols*cn + j*cn + 1] = 255 - intensity[1]; //g
+           		src_img.data[i*src_img.cols*cn + j*cn + 2] = 255 - intensity[2]; //r
+			Scalar Newintensity = src_img.at<uchar>(i, j);
+			cout << Newintensity[0] << Newintensity[1] << Newintensity[2] << " || " ;
+		}
+		cout << endl;
+	} 	
+
+	vector<int> params(2);
+	params[0] = CV_IMWRITE_PXM_BINARY;
+	params[1] = 0;
+	imwrite("img.ppm", src_img, params); 
+	Mat src = imread("img.ppm");
+
+	const char *infilename="img.pgm";
+ 	/* while(*++args) {
+		const char *a=*args;
+		
+		if(!strcmp(a,"-h")) usage();
+		else if(!strcmp(a,"-nblocks")) {
+		  if(!sscanf(*++args,"%d",&nblocks)) {
+			fprintf(stderr,"could not parse %s argument",a); 
+			usage();
+		  }
+		} else if(!strcmp(a,"-orientationsPerScale")) {
+		  char *c;
+		  n_scale=0;
+		  for(c=strtok(*++args,",");c;c=strtok(NULL,",")) {
+			if(!sscanf(c,"%d",&orientations_per_scale[n_scale++])) {
+			  fprintf(stderr,"could not parse %s argument",a); 
+			  usage();         
+			}
+		  }
+		} else {
+		  infilename=a;
+		}
+	} */
+
+  
+	//infilename = a; 
+	color_image_t *im=load_ppm(infilename);
+  
+	float *desc=color_gist_scaletab(im,nblocks,n_scale,orientations_per_scale);
+  
+  	int descsize=0;
+  	/* compute descriptor size */
+  	for(i=0;i<n_scale;i++) 
+   		descsize+=nblocks*nblocks*orientations_per_scale[i];
+
+ 	descsize*=3; /* color */
+
+  	/* print descriptor */
+  	for(i=0;i<descsize;i++) 
+   	 	printf("%.4f ",desc[i]);
+
+ 	printf("\n");
+  
+  	free(desc);
+
+  	color_image_delete(im);
+
+  	return 0; 
+}

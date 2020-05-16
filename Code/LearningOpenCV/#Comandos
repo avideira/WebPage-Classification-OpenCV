@@ -1,0 +1,3 @@
+Compilar: 
+g++ exemplo1.c -o exemplo1 `pkg-config --cflags --libs opencv`
+

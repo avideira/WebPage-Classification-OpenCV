@@ -1,0 +1,4 @@
+Gabor1.m:4个方向的Gabo滤波器模板的图像显示
+Gabor2.m:4个方向的Gabor滤波器对lena进行滤波的顶层调用模块
+gabor.m:绘制一个Gabor滤波器的空域和频域函数图
+compute.m:计算Gabor滤波器函数（要被上面3个模块调用，这3个模块彼此独立）
